@@ -1,15 +1,17 @@
-sides = [3, 2, 4, 7, 5, 12, 11, 13, 15, 16, 14, 14]
-sides = sorted(sides, reverse=True)
-smax = 0
-for i in range(len(sides)):
-    for j in range(i + 1, len(sides)):
-        for k in range(j + 1, len(sides)):
-            a = sides[i]
-            b = sides[j]
-            c = sides[k]
-            if a + b > c and a + c > b and b + c > a:
-                p = (a + b + c) / 2
-                s = (p * (p - a) * (p - b) * (p - c)) ** (1 / 2)
-                if s > smax:
-                    smax = s
-print("Максимальная площадь треугольника", smax)
+import math
+print("Введите коэффиценты квадратного уравнения:")
+koef_A = int(input())
+koef_B = int(input())
+koef_C = int(input())
+koren_x1 = 0
+koren_x2 = 0
+discrimiant = koef_B**2 - 4*koef_A*koef_C
+if discrimiant > 0 :
+    koren_x1 = -((koef_B+math.sqrt(discrimiant))/2*koef_A)
+    koren_x2 = -((koef_B-math.sqrt(discrimiant))/2*koef_A)
+    print("Корни квадратного уравнения: \n", "Первый корень = ", round(koren_x1), "\n", "Второй корень = ", round(koren_x2))
+if discrimiant == 0 :
+    koren_x1 = -(koef_B/(2*koef_A))
+    print('Корни квадратного уравнения: \n', "Первый корень = ", round(koren_x1), "\n", "Второй корень = ", round(koren_x1))
+if discrimiant < 0 :
+    print('Корней квадратного уравнения не существует')
